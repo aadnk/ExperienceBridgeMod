@@ -7,3 +7,21 @@ website: http://www.comphenix.net/ExperienceBridgeMod
 main: com.comphenix.xpbridge.ExperienceBridgeMod
 database: false
 depend: [ExperienceMod]
+
+permissions:
+  experiencebridgemod.*:
+    description: Gives access to everything.
+    children:
+      experiencebridgemod.rewards.processing: true
+      experiencebridgemod.rewards.transmute: true
+  experiencebridgemod.rewards.*:
+    description: Gives access to all experience rewards.
+    children:
+      experiencebridgemod.rewards.processing: true
+      experiencebridgemod.rewards.transmute: true
+  experiencebridgemod.rewards.processing:
+    description: Rewards processing items with processors in IndustrialCraft.
+    default: false
+  experiencebridgemod.rewards.transmute:
+    description: Rewards transmuting items with EquivalentExchange.
+    default: false
