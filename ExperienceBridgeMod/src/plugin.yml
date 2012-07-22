@@ -1,0 +1,9 @@
+name: ExperienceBridgeMod
+version: 1.0.0
+description: This plugin allows ExperienceMod to work with custom servers, such as Tekkit.
+author: Comphenix
+website: http://www.comphenix.net/ExperienceBridgeMod
+
+main: com.comphenix.xpbridge.ExperienceBridgeMod
+database: false
+depend: [ExperienceMod]
