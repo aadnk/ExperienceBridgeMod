@@ -11,7 +11,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.comphenix.xp.ActionTypes;
-import com.comphenix.xp.Debugger;
 import com.comphenix.xp.ExperienceMod;
 import com.comphenix.xp.mods.CustomBlockProviders;
 import com.comphenix.xp.parser.ParsingException;
@@ -19,7 +18,7 @@ import com.comphenix.xp.parser.Utility;
 import com.comphenix.xp.parser.text.ItemNameParser;
 import com.comphenix.xpbridge.mods.*;
 
-public class ExperienceBridgeMod extends JavaPlugin implements Debugger {
+public class ExperienceBridgeMod extends JavaPlugin {
 
 	private ExperienceMod experienceMod;
 	private ItemNameParser itemParser;
@@ -50,9 +49,9 @@ public class ExperienceBridgeMod extends JavaPlugin implements Debugger {
 			CustomBlockProviders providers = experienceMod.getCustomBlockProvider();
 			ActionTypes types = experienceMod.getActionTypes();
 			
-			providers.register(new RedPowerBlockService(itemParser, this));
-			providers.register(new IndustrialCraftBlockService(types, itemParser, this));
-			providers.register(new EquivalentExchangeBlockService(types, itemParser, this));
+			providers.register(new RedPowerBlockService(itemParser, experienceMod));
+			providers.register(new IndustrialCraftBlockService(types, itemParser, experienceMod));
+			providers.register(new EquivalentExchangeBlockService(types, itemParser, experienceMod));
 			providers.setDefaultName(RedPowerBlockService.NAME);
 						
 		} catch (ParsingException e) {
@@ -142,23 +141,5 @@ public class ExperienceBridgeMod extends JavaPlugin implements Debugger {
 		
 		// Failure
 		return null;
-	}
-
-	@Override
-	public boolean isDebugEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void printDebug(Object sender, String message, Object... arguments) {
-		if (logger != null)
-			logger.info(String.format(message, arguments));
-	}
-
-	@Override
-	public void printWarning(Object sender, String message, Object... arguments) {
-		if (logger != null)
-			logger.info(String.format(message, arguments));
 	}
 }

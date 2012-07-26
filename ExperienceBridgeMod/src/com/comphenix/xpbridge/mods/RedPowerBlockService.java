@@ -24,12 +24,15 @@ public class RedPowerBlockService implements BlockService {
 	private int BLUELECTRIC_FURNACE = 1;
 	private int PROJECT_TABLE = 3;
 
+	private Debugger debugger;
+	
 	// Whether or not RedPower was successfully found
 	private boolean loaded;
 	
 	public RedPowerBlockService(ItemNameParser parser, Debugger debugger) throws ParsingException {
 
-		REDPOWER_PROCESS_BLOCK = parser.getFirstRegistered("RPAFURNACE");
+		this.debugger = debugger;
+		this.REDPOWER_PROCESS_BLOCK = parser.getFirstRegistered("RPAFURNACE");
 
 		if (REDPOWER_PROCESS_BLOCK != null) {
 			loaded = true;
@@ -59,10 +62,8 @@ public class RedPowerBlockService implements BlockService {
 			return BlockResponse.FAILURE;
 		}
 		
-		// Print slot and inventory type
-		System.out.println(String.format("Raw: %d, Type: %s, Block: %s", 
-				rawSlot, type, block)
-		);
+		// Print slot and inventory type'
+		debugger.printDebug(this, "Raw: %d, Type: %s, Block: %s", rawSlot, type, block);
 	
 		// Check inventory type and filter out click events on empty slots
 		boolean standardChecks = 
