@@ -23,6 +23,7 @@ public class RedPowerBlockService implements BlockService {
 	private int ALLOY_FURNACE = 0;
 	private int BLUELECTRIC_FURNACE = 1;
 	private int PROJECT_TABLE = 3;
+	private int BLUELECTRIC_ALLOY_FURNACE = 4;
 
 	private Debugger debugger;
 	
@@ -75,9 +76,15 @@ public class RedPowerBlockService implements BlockService {
 				return new BlockResponse(InventoryType.FURNACE, ActionTypes.SMELTING, Permissions.REWARDS_SMELTING);
 		}
 		
-		// Bluelectric alloy furnace
+		// Bluelectric furnace
 		if (block.match(REDPOWER_PROCESS_BLOCK, BLUELECTRIC_FURNACE)) {
 			if (standardChecks && rawSlot == 1)
+				return new BlockResponse(InventoryType.FURNACE, ActionTypes.SMELTING, Permissions.REWARDS_SMELTING);
+		}
+		
+		// Bluelectric alloy furnace
+		if (block.match(REDPOWER_PROCESS_BLOCK, BLUELECTRIC_ALLOY_FURNACE)) {
+			if (standardChecks && rawSlot == 9)
 				return new BlockResponse(InventoryType.FURNACE, ActionTypes.SMELTING, Permissions.REWARDS_SMELTING);
 		}
 		

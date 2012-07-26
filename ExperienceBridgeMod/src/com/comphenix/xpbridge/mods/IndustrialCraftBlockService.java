@@ -32,7 +32,7 @@ public class IndustrialCraftBlockService implements BlockService {
 	private int RECYCLER = 11;
 	
 	private int INDUCTION_FURNACE = 13;
-	
+
 	private boolean loaded;
 	
 	public IndustrialCraftBlockService(ActionTypes types, ItemNameParser parser, Debugger debugger) throws ParsingException {
