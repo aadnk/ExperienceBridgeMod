@@ -32,7 +32,8 @@ public class IndustrialCraftBlockService implements BlockService {
 	private int RECYCLER = 11;
 	
 	private int INDUCTION_FURNACE = 13;
-
+	private int MASS_FABRICATOR = 14;
+	
 	private boolean loaded;
 	
 	public IndustrialCraftBlockService(ActionTypes types, ItemNameParser parser, Debugger debugger) throws ParsingException {
@@ -84,6 +85,13 @@ public class IndustrialCraftBlockService implements BlockService {
 			block.match(MACHINE_BLOCK, RECYCLER)) {
 			
 			if (ItemQuery.hasItems(current) && rawSlot == 2)
+				return new BlockResponse(InventoryType.FURNACE, ACTION_PROCESSING, REWARD_PROCESSING);
+		}
+		
+		// Mass fabricator
+		if (block.match(MACHINE_BLOCK, MASS_FABRICATOR)) {
+			
+			if (ItemQuery.hasItems(current) && rawSlot == 1)
 				return new BlockResponse(InventoryType.FURNACE, ACTION_PROCESSING, REWARD_PROCESSING);
 		}
 		
