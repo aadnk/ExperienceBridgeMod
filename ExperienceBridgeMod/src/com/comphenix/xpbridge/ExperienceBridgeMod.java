@@ -15,6 +15,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.comphenix.xp.ActionTypes;
+import com.comphenix.xp.Debugger;
 import com.comphenix.xp.ExperienceMod;
 import com.comphenix.xp.mods.CustomBlockProviders;
 import com.comphenix.xp.parser.ParsingException;
@@ -23,7 +24,7 @@ import com.comphenix.xp.parser.Utility;
 import com.comphenix.xp.parser.text.ItemNameParser;
 import com.comphenix.xpbridge.mods.*;
 
-public class ExperienceBridgeMod extends JavaPlugin {
+public class ExperienceBridgeMod extends JavaPlugin implements Debugger {
 
 	private static final String EXP_BRIDGE_COMMAND = "experiencebridgemod";
 	private static final String EXP_BRIDGE_ALIAS = "expbridge";
@@ -61,12 +62,12 @@ public class ExperienceBridgeMod extends JavaPlugin {
 			CustomBlockProviders providers = experienceMod.getCustomBlockProvider();
 			ActionTypes types = experienceMod.getActionTypes();
 			
-			providers.register(new RedPowerBlockService(itemParser, experienceMod));
-			providers.register(new IndustrialCraftBlockService(types, itemParser, experienceMod));
-			providers.register(new IndustrialExtensionBlockService(itemParser,experienceMod));
-			providers.register(new RailCraftBlockService(itemParser, experienceMod));
-			providers.register(new EquivalentExchangeBlockService(types, itemParser, experienceMod));
-			providers.register(new BuildCraftBlockService(itemParser, experienceMod));
+			providers.register(new RedPowerBlockService(itemParser, this));
+			providers.register(new IndustrialCraftBlockService(types, itemParser, this));
+			providers.register(new IndustrialExtensionBlockService(itemParser, this));
+			providers.register(new RailCraftBlockService(itemParser, this));
+			providers.register(new EquivalentExchangeBlockService(types, itemParser, this));
+			providers.register(new BuildCraftBlockService(itemParser, this));
 			providers.setDefaultName(RedPowerBlockService.NAME);
 			
 		} catch (ParsingException e) {
@@ -158,7 +159,7 @@ public class ExperienceBridgeMod extends JavaPlugin {
 				} else {
 		
 					// Damn it
-					logger.info("Cannot register item " + item.id + ": No valid name found.");
+					logger.info("Cannot register item " + item.id + ": Invalid name.");
 				}
 				
 			}
@@ -204,5 +205,26 @@ public class ExperienceBridgeMod extends JavaPlugin {
 		
 		// Failure
 		return null;
+	}
+
+	@Override
+	public boolean isDebugEnabled() {
+		return experienceMod.isDebugEnabled();
+	}
+
+	@Override
+	public void printDebug(Object sender, String message, Object... params) {
+		experienceMod.printDebug(sender, message, params);
+	}
+
+	@Override
+	public void printWarning(Object sender, String message, Object... params) {
+		try {
+			experienceMod.printWarning(sender, message, params);
+		} catch (Exception e) {
+			
+			// Do it ourself
+			getLogger().warning(String.format(message, params));
+		}
 	}
 }
