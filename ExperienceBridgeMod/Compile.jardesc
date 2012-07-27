@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="E:/Games/Minecraft/Tekkit/plugins/ExperienceBridgeMod.jar"/>
+    <jar path="E:/Games/Minecraft/Server Mods/1.2 R4/ExperienceBridgeMod/1.1.0/ExperienceBridgeMod.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/ExperienceBridgeMod/Compile.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>

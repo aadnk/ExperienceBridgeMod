@@ -183,7 +183,6 @@ public class ExperienceBridgeMod extends JavaPlugin {
 		
 		// Info
 		registered.put(id, name);
-		logger.info(String.format("Registering %s with id %d", name, id));
 	}
 	
 	private ExperienceMod loadExperienceMod(Logger logger) {
