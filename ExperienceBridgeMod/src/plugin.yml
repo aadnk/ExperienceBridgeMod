@@ -8,6 +8,13 @@ main: com.comphenix.xpbridge.ExperienceBridgeMod
 database: false
 depend: [ExperienceMod]
 
+commands:
+   expbridge:
+      description: Retrieves the registered names for the given item or block.
+      usage: /<command> get [item id]
+      permission: experiencemod.admin
+      permission-message: You don't have <permission>
+
 permissions:
   experiencebridgemod.*:
     description: Gives access to everything.
