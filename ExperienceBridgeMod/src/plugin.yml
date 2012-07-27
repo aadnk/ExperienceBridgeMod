@@ -1,5 +1,5 @@
 name: ExperienceBridgeMod
-version: 1.0.0
+version: 1.1.0
 description: This plugin allows ExperienceMod to work with custom servers, such as Tekkit.
 author: Comphenix
 website: http://www.comphenix.net/ExperienceBridgeMod
@@ -9,9 +9,10 @@ database: false
 depend: [ExperienceMod]
 
 commands:
-   expbridge:
+   experiencebridgemod:
       description: Retrieves the registered names for the given item or block.
       usage: /<command> get [item id]
+      alias: [expbridge]
       permission: experiencemod.admin
       permission-message: You don't have <permission>
 
