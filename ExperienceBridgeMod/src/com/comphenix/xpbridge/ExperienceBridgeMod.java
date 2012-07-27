@@ -52,9 +52,10 @@ public class ExperienceBridgeMod extends JavaPlugin {
 			providers.register(new RedPowerBlockService(itemParser, experienceMod));
 			providers.register(new IndustrialCraftBlockService(types, itemParser, experienceMod));
 			providers.register(new IndustrialExtensionBlockService(itemParser,experienceMod));
+			providers.register(new RailCraftBlockService(itemParser, experienceMod));
 			providers.register(new EquivalentExchangeBlockService(types, itemParser, experienceMod));
 			providers.setDefaultName(RedPowerBlockService.NAME);
-						
+			
 		} catch (ParsingException e) {
 			logger.severe("Error loading mod blocks: " + e.getMessage());
 		}
