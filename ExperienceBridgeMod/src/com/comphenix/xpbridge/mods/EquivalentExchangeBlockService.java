@@ -81,8 +81,6 @@ public class EquivalentExchangeBlockService implements BlockService {
 			return BlockResponse.FAILURE;
 		}
 		
-		System.out.println(String.format("Current: %s", current));
-		
 		// Check for a transmutation tablet
 		if ((block != null && block.match(TRANSMUTATION_TABLET, 0)) ||
 		    (inHand != null && inHand.match(TRANSMUTATION_ITEM, null))) {
