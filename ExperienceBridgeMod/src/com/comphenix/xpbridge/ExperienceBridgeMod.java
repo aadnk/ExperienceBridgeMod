@@ -62,11 +62,11 @@ public class ExperienceBridgeMod extends JavaPlugin implements Debugger {
 			CustomBlockProviders providers = experienceMod.getCustomBlockProvider();
 			ActionTypes types = experienceMod.getActionTypes();
 			
-			providers.register(new RedPowerBlockService(itemParser, this));
+			providers.register(new EquivalentExchangeBlockService(types, itemParser, this, experienceMod));
 			providers.register(new IndustrialCraftBlockService(types, itemParser, this));
 			providers.register(new IndustrialExtensionBlockService(itemParser, this));
+			providers.register(new RedPowerBlockService(itemParser, this));
 			providers.register(new RailCraftBlockService(itemParser, this));
-			providers.register(new EquivalentExchangeBlockService(types, itemParser, this));
 			providers.register(new BuildCraftBlockService(itemParser, this));
 			providers.setDefaultName(RedPowerBlockService.NAME);
 			
